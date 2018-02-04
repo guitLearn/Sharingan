@@ -20,31 +20,32 @@ Window {
     }
 
 
-
         Canvas{
             id:singleHookJade
             x:100
             y:50
-            width:300
-            height: 300
+            width:100
+            height: 100
 
             onPaint: {
                 var ctx = singleHookJade.getContext('2d')
+
 
                 ctx.fillStyle = 'red'
                 ctx.strokeStyle = 'black'
 
                 ctx.beginPath()
-                ctx.ellipse(30, 30, 100, 100)
-                ctx.ellipse(40, 40, 80, 80)
+                ctx.ellipse(0, 0, 100, 100)
+                ctx.ellipse(10, 10, 80, 80)
                 ctx.fill()
 
                 ctx.stroke()
+
             }
 
             CommaObj {
-                property int centerX: 100
-                property int centerY: calcPos(80, 80, centerX, 40, true)
+                property int centerX: 60
+                property int centerY: calcPos(50, 50, centerX, 40, true)
                 width: 20
                 x: centerX - width / 4 * 3
                 y: centerY - width / 4 * 2
@@ -53,8 +54,8 @@ Window {
             }
 
             CommaObj {
-                property int centerX: 60
-                property int centerY: calcPos(80, 80, centerX, 40, false)
+                property int centerX: 40
+                property int centerY: calcPos(50, 50, centerX, 40, false)
                 width: 20
                 x: centerX - width / 4 * 3
                 y: centerY - width / 4 * 2
@@ -62,6 +63,14 @@ Window {
                 commaStrokeColor:'black'
                 bCommaRotate: true
                 rotateAngle: Math.PI
+            }
+
+            RotationAnimator on rotation {
+//                target:singleHookJade
+                from: 180;
+                to: 360;
+                duration: 100
+                loops: 1000
             }
         }
 
